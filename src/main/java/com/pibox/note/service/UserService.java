@@ -12,5 +12,7 @@ public interface UserService {
 
     void addUser(String firstName, String lastName, String email);
 
+    void updateUser(Long id, String firstName, String lastName, String email);
+
     void deleteUser(Long id);
 }

@@ -10,8 +10,11 @@
 
 <div class="container">
     <div class="row">
-        <h1>Notes app</h1>
+        <a th:href="@{/}">
+            <h1>Notes app</h1>
+        </a>
         <br>
+        <h2 th:text="'Edit User: ' + ${user.firstName} + ' ' + ${user.lastName}"></h2>
         <form action="#" th:action="@{/userEditForm}" th:object="${user}" method="post">
             <div class="mb-3">
                 <label for="firstName" class="form-label">First Name</label>
@@ -28,6 +31,7 @@
                 <input type="email" class="form-control"
                        th:field="*{email}" id="email" placeholder="Email">
             </div>
+            <input type="hidden" th:field="*{id}" id="id">
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

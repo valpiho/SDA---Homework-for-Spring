@@ -23,12 +23,17 @@ public class Note {
     @CreationTimestamp
     private Date date;
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public Note() { }
 
-    public Note(String title, String description, Date date) {
+    public Note(String title, String description, Date date, User user) {
         this.title = title;
         this.description = description;
         this.date = new Date();
+        this.user = user;
     }
 
     public Long getId() {
@@ -61,6 +66,14 @@ public class Note {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

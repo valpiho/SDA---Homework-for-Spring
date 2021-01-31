@@ -23,8 +23,7 @@ public class User implements Serializable {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
+    @OneToMany(mappedBy = "user")
     private List<Note> noteList;
 
     public User() { }

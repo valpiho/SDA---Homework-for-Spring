@@ -14,21 +14,17 @@
             <h1>Notes app</h1>
         </a>
         <br>
-        <form action="#" th:action="@{/userAddForm}" th:object="${user}" method="post">
+        <h2 th:text="'New note for: ' + ${user.firstName} + ' ' + ${user.lastName}"></h2>
+        <form action="#" th:action="@{/user/{user_id}/noteAddForm(user_id=${user.id})}" th:object="${note}" method="post">
             <div class="mb-3">
-                <label for="firstName" class="form-label">First Name</label>
+                <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control"
-                       th:field="*{firstName}" id="firstName" placeholder="First Name">
+                       th:field="*{title}" id="title" placeholder="Title">
             </div>
             <div class="mb-3">
-                <label for="lastName" class="form-label">Last Name</label>
+                <label for="description" class="form-label">Description</label>
                 <input type="text" class="form-control"
-                       th:field="*{lastName}" id="lastName" placeholder="Last Name">
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control"
-                       th:field="*{email}" id="email" placeholder="Email">
+                       th:field="*{description}" id="description" placeholder="Description">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

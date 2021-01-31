@@ -1,13 +1,14 @@
-package com.pibox.note.service;
+package com.pibox.note.service.impl;
 
 import com.pibox.note.model.User;
 import com.pibox.note.repository.UserRepository;
+import com.pibox.note.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
@@ -28,6 +29,15 @@ public class UserServiceImpl implements UserService{
     @Override
     public void addUser(String firstName, String lastName, String email) {
         User user = new User();
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setEmail(email);
+        userRepository.save(user);
+    }
+
+    @Override
+    public void updateUser(Long id, String firstName, String lastName, String email) {
+        User user = userRepository.findUserById(id);
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setEmail(email);

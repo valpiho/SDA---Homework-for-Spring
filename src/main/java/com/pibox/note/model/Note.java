@@ -23,7 +23,7 @@ public class Note {
     @CreationTimestamp
     private Date date;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "user_id")
     private User user;
 

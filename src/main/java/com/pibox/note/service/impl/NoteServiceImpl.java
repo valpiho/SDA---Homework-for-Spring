@@ -6,6 +6,7 @@ import com.pibox.note.repository.NoteRepository;
 import com.pibox.note.service.NoteService;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -15,6 +16,16 @@ public class NoteServiceImpl implements NoteService {
 
     public NoteServiceImpl(NoteRepository noteRepository) {
         this.noteRepository = noteRepository;
+    }
+
+    @Override
+    public Note getNote(Long id) {
+        return noteRepository.findNoteById(id);
+    }
+
+    @Override
+    public List<Note> getUserNotes(Long id) {
+        return noteRepository.findAllByUser_Id(id);
     }
 
     @Override
@@ -31,17 +42,12 @@ public class NoteServiceImpl implements NoteService {
         Note note = noteRepository.findNoteById(id);
         note.setTitle(title);
         note.setDescription(description);
+        note.setDate(new Date());
         noteRepository.save(note);
     }
 
     @Override
-    public Note getNote(Long id) {
-        return noteRepository.findNoteById(id);
-    }
-
-
-    @Override
-    public List<Note> getUserNotes(Long id) {
-        return noteRepository.findAllByUser_Id(id);
+    public void deleteNote(Long id) {
+        noteRepository.deleteById(id);
     }
 }

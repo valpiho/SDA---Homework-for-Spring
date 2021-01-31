@@ -14,4 +14,6 @@ public interface NoteService {
     void addNote(User user, String title, String description);
 
     void updateNote(Long id, String title, String description);
+
+    void deleteNote(Long id);
 }

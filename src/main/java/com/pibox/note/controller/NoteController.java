@@ -60,4 +60,10 @@ public class NoteController {
         noteService.updateNote(note.getId(), note.getTitle(), note.getDescription());
         return "redirect:/user/{user_id}";
     }
+
+    @GetMapping("{user_id}/delete/{note_id}")
+    public String deleteNote(@PathVariable(value = "note_id") Long noteId) {
+        noteService.deleteNote(noteId);
+        return "redirect:/user/{user_id}";
+    }
 }

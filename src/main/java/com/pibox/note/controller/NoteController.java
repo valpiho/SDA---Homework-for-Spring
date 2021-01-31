@@ -43,7 +43,7 @@ public class NoteController {
     public String addNote(@PathVariable(value = "user_id") Long userId,
                           @ModelAttribute(value = "note") Note note) {
         User user = userService.getUser(userId);
-        noteService.addNote(user, note.getTitle(), note.getDescription());
+        noteService.addNote(user.getId(), note.getTitle(), note.getDescription());
         return "redirect:/user/{user_id}";
     }
 

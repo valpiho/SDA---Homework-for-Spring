@@ -27,18 +27,13 @@ public class UserRestController {
         return "User has been added";
     }
 
-    @PostMapping("/user/{user_id}")
-    public User findUser(@PathVariable("user_id") Long id) {
-        return userService.getUser(id);
-    }
-
     @PostMapping("/editUser")
     public String editUser(@RequestBody User user) {
         userService.updateUser(user.getId(), user.getFirstName(), user.getLastName(), user.getEmail());
         return "User has been updated";
     }
 
-    @PostMapping("/deleteUser/{user_id}")
+    @DeleteMapping("/deleteUser/{user_id}")
     public String editUser(@PathVariable("user_id") Long id) {
         userService.deleteUser(id);
         return "User has been deleted";

@@ -11,7 +11,7 @@ public interface NoteService {
 
     Note getNote(Long id);
 
-    void addNote(User user, String title, String description);
+    void addNote(Long user_id, String title, String description);
 
     void updateNote(Long id, String title, String description);
 

@@ -34,8 +34,8 @@
                 </td>
                 <td th:text="${user.email}"></td>
                 <td style="width: 20%;">
-                    <span>Notes: </span>
-                    <a th:href="@{/user/{user_id}/note-add(user_id=${user.id})}">Add note</a>
+                    <span th:text="${user.noteList.size() + ' Note(s)'}"></span> /
+                    <a th:href="@{/user/{user_id}/note-add(user_id=${user.id})}"> Add note</a>
                 </td>
                 <td style="width: 20%;">
                     <a th:href="@{/user-edit/{user_id}(user_id=${user.id})}">Edit</a> /
